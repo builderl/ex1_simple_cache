@@ -1,0 +1,11 @@
+%% -*- erlang -*-
+{application, gen_web_server,
+ [{description, "A generic web server behaviour"},
+  {vsn, "=VSN="},
+  {modules,
+   [
+    =MODULES=
+   ]},
+  {registered, []},
+  {applications, [kernel, stdlib]}
+ ]}.

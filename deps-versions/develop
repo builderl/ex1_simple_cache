@@ -1,0 +1,7 @@
+dep_clone_args = \
+	'-b develop $(repo_base_url)/builderl_sample_setup.git' \
+	'-b develop $(repo_base_url)/builderl_sample_http_if.git http_interface' \
+	'-b develop $(repo_base_url)/builderl_sample_tcp_if.git tcp_interface'
+
+deps = \
+	builderl_sample_setup http_interface tcp_interface
