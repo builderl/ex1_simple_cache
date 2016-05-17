@@ -1,7 +1,9 @@
-dep_clone_args = \
-	'-b develop $(repo_base_url)/builderl_sample_setup.git' \
-	'-b develop $(repo_base_url)/builderl_sample_http_if.git http_interface' \
-	'-b develop $(repo_base_url)/builderl_sample_tcp_if.git tcp_interface'
+%% -*- erlang -*-
 
-deps = \
-	builderl_sample_setup http_interface tcp_interface
+{"develop",      "=REPOBASE=/ex1_sc_setup.git",            "builderl_sample_setup"}.
+{"develop",      "=REPOBASE=/ex1_http_interface.git",      "http_interface"}.
+{"develop",      "=REPOBASE=/ex1_tcp_interface.git",       "tcp_interface"}.
+
+"gen_web_server".
+"resource_discovery".
+"simple_cache".

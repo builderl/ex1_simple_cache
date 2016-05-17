@@ -1,5 +1,6 @@
 # -*- mode: Makefile -*-
-# Copyright (c) 2015, Grzegorz Junka
+
+# Copyright (c) 2015-2016, Grzegorz Junka
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -35,20 +36,13 @@
 # Credit for the Erlang downloading tip:
 # https://groups.google.com/forum/?fromgroups=#!topic/erlang-programming/U0JJ3SeUv5Y
 
-# Project-specific variables and settings (Change where required)
-#-------------------------------------------------------------------------------
-# Tested version known to compile riak_pb
-REBARURL   ?= https://github.com/yoonka/erlstrap/wiki/rebar
-# Git repository for dependencies listed in files in deps-versions/
-GITURL     ?= https://github.com/yoonka
-# The development branch, use dependencies from deps-versions/$GITDEVELOP
-# if the current branch starts with the name of the development branch
-GITDEVELOP ?= develop
-# Name of the default branch, use dependencies from deps-versions/$GITMASTER
-GITMASTER  ?= master
-# Compilation flags
-ERLCFLAGS  ?= -W -v -pa deps/lager/ebin +debug_info
-#-------------------------------------------------------------------------------
+## Project-specific variables and settings (Change where required)
+##------------------------------------------------------------------------------
+## Tested version known to compile riak_pb
+REBARURL  ?= https://github.com/yoonka/erlstrap/wiki/rebar
+## Compilation flags
+# ERLCFLAGS ?= -W -v -pa deps/lager/ebin +debug_info +'{parse_transform, lager_transform}'
+##------------------------------------------------------------------------------
 
 ## These are defaults used in GNUmakefileBuilderl, change if needed
 ##------------------------------------------------------------------------------
@@ -67,7 +61,10 @@ BLDERLLOCAL := GNUmakefileBuilderl
 # URL to download the builderl/makefiles/GNUmakefileBuilderl makefile
 BLDERLMKURL := https://raw.githubusercontent.com/yoonka/builderl/master/makefiles/GNUmakefileBuilderl
 
-ifneq ($(MAKECMDGOALS),$(filter $(MAKECMDGOALS),rm-builderl))
+ifneq (rm-builderl,$(filter $(MAKECMDGOALS),rm-builderl))
+
+.PHONY: all
+all: get-deps tgz
 
 ifeq ($(wildcard $(BLDERLLOCAL)),)
 $(shell erl -noshell -s inets -s ssl -eval \

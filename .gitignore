@@ -7,7 +7,6 @@
 /lib/*/priv/mibs/
 
 /deps/migresia/
-/deps/builderl/
 /deps/node_package/
 /deps/recon/
 
