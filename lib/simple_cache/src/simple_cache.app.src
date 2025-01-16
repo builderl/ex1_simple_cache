@@ -4,7 +4,6 @@
   {vsn, "=VSN="},
   {modules,
    [
-    =MODULES=
    ]},
   {registered, [sc_sup, sc_element_sup, sc_event]},
   {applications, [kernel, sasl, stdlib, mnesia, resource_discovery]},
