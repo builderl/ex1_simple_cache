@@ -4,7 +4,6 @@
   {vsn, "=VSN="},
   {modules,
    [
-    =MODULES=
    ]},
   {registered, [rd_sup, rd_server]},
   {applications, [kernel, stdlib]},
